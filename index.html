@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramie Fathy, MD - Dermatology Resident, Researcher, Writer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font globally */
+        html {
+             scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+            color: #1f2937; /* Tailwind gray-800 */
+        }
+        /* Sidebar Navigation Active State */
+        .sidebar-link-active {
+            background-color: #e0e7ff; /* indigo-100 */
+            color: #4338ca; /* indigo-700 */
+            font-weight: 600;
+        }
+        /* Style for content cards */
+        .content-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem; /* Standard radius */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.04); /* Lighter shadow */
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .content-card-content {
+            flex-grow: 1;
+        }
+        /* Section title styling */
+        .section-title {
+             color: #111827; /* gray-900 */
+             margin-bottom: 2rem; /* Reduced margin */
+             padding-bottom: 0.5rem;
+             border-bottom: 1px solid #d1d5db; /* gray-300 */
+        }
+        /* Card title styling */
+        .card-title {
+            color: #1d4ed8; /* blue-700 */
+        }
+        /* List styling inside cards */
+        .card-list {
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* gray-600 */
+        }
+        /* Header styling */
+        header {
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+            background-color: #ffffff;
+        }
+        /* Footer styling */
+        footer {
+            background-color: #1f2937; /* gray-800 */
+            color: #d1d5db; /* gray-300 */
+        }
+        /* Mobile Menu Button Styling */
+        #mobile-menu-button {
+            z-index: 60; /* Ensure button is above sidebar */
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: white;
+            border-radius: 50%;
+            padding: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        /* Mobile Sidebar Styling */
+        #sidebar.translate-x-full {
+             transform: translateX(100%);
+        }
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Ensure sections have top padding for scrollspy */
+        section[id] {
+            padding-top: 60px; /* Adjust based on header height */
+            margin-top: -60px; /* Negative margin to offset padding */
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-700">Ramie Fathy, MD</div>
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" aria-label="Open Menu">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto flex flex-col lg:flex-row px-6 py-8 gap-8">
+
+        <aside id="sidebar" class="w-full lg:w-1/4 lg:sticky lg:top-20 h-full lg:h-screen-minus-header bg-white p-6 rounded-lg shadow-sm border border-gray-200
+                                     fixed top-0 right-0 h-full z-50 transform translate-x-full lg:transform-none lg:relative lg:translate-x-0 lg:block">
+             <button id="close-sidebar-button" class="absolute top-4 right-4 lg:hidden text-gray-600 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">Navigation</h3>
+            <nav class="space-y-2">
+                <a href="#home" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="home">Home</a>
+                <a href="#clinical" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="clinical">Clinical</a>
+                <a href="#research" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="research">Research</a>
+                <a href="#leadership" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="leadership">Leadership & Writing</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="skills">Skills & Interests</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 sidebar-link" data-section="contact">Contact</a>
+            </nav>
+
+             <div class="mt-8 pt-4 border-t">
+                 <h3 class="text-lg font-semibold mb-4 text-gray-800">Connect</h3>
+                 <div class="flex space-x-4">
+                    <a href="https://scholar.google.com/citations?user=Pb_Ht9cAAAAJ&hl=en" target="_blank" title="Google Scholar" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                        <i class="fas fa-graduation-cap fa-lg"></i>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Ramie-Fathy-2" target="_blank" title="ResearchGate" class="text-gray-500 hover:text-green-600 transition duration-300">
+                        <i class="fab fa-researchgate fa-lg"></i>
+                    </a>
+                    </div>
+             </div>
+        </aside>
+
+        <main class="w-full lg:w-3/4 space-y-12">
+
+            <section id="home" class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-xl shadow-sm border border-gray-200 p-8 md:p-12">
+                <div class="text-center">
+                    <img src="https://placehold.co/160x160/EBF4FF/3B82F6?text=RF" alt="Ramie Fathy, MD" class="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto mb-8 border-4 border-white shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/160x160/cccccc/ffffff?text=Image+Error';">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ramie Fathy, MD</h1>
+                    <p class="text-xl md:text-2xl text-blue-600 font-medium mb-8">Dermatology Resident | Researcher | Writer</p>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed">
+                        Welcome! I am currently a PGY-3 Dermatology Resident Physician at Johns Hopkins University. Originally from Knoxville, TN, I graduated Summa Cum Laude from Princeton University (Molecular Biology) and earned my MD from the Perelman School of Medicine at the University of Pennsylvania, where I was inducted into AOA. This site highlights my clinical work, research, leadership, writing, and other interests.
+                    </p>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 inline-block shadow hover:shadow-md transform hover:-translate-y-0.5">Get In Touch</a>
+                </div>
+            </section>
+
+            <section id="clinical" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10">
+                 <h2 class="text-2xl md:text-3xl font-bold section-title">Clinical Experience & Interests</h2>
+                 <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-2/5"> <img src="https://placehold.co/500x375/E0F2FE/38BDF8?text=Johns+Hopkins+Dermatology" alt="Johns Hopkins Dermatology" class="rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x375/cccccc/ffffff?text=Image+Error';">
+                    </div>
+                    <div class="md:w-3/5">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3">Dermatology Residency (PGY-3)</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            I am currently completing my dermatology residency training (2023-Present) at Johns Hopkins Hospital, focusing on developing expertise in diagnosing and managing a wide range of skin conditions. My preliminary internship year (2022-2023) was completed at Pennsylvania Hospital.
+                        </p>
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3 mt-5">Clinical Interests</h3>
+                        <p class="text-gray-700 mb-5 leading-relaxed">
+                            My interests within dermatology include medical dermatology, epidemiology, the impact of environmental factors like climate change on skin health, teledermatology, applications of AI in clinical practice, and exploring integrative approaches to patient care. I am an active member of the Rheumatology-Dermatology Society, Medical Dermatology Society, and Society of Dermatology Hospitalists.
+                        </p>
+                         <a href="https://www.hopkinsmedicine.org/dermatology/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center transition duration-300 group">
+                            Learn More About Johns Hopkins Dermatology <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title">Research Experience</h2>
+                <div class="space-y-6"> <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h4 class="text-lg font-semibold card-title mb-3">Current Research (Johns Hopkins / Glass Health)</h4>
+                        <ul class="list-disc list-inside space-y-2 card-list">
+                            <li>Spearheading studies on Large Language Model (LLM) applications in dermatology (dermoscopic analysis, chatbot accuracy, board question generation) as an AI Clinical Fellow at Glass Health.</li>
+                            <li>Investigating 3D teledermatology feasibility using specialized cameras and mixed reality headsets.</li>
+                            <li>Evaluating the impact of race/ethnicity on dermatomyositis-associated cancer screening.</li>
+                            <li>Assessing the effect of GLP-1 agonists on psoriasis and hidradenitis suppurativa severity.</li>
+                        </ul>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h4 class="text-lg font-semibold card-title mb-3">Past Research Fellowships & Projects</h4>
+                        <ul class="list-disc list-inside space-y-2 card-list">
+                            <li>**Harvard Medical School (Research Fellow, 2021-2022):** Characterized cutaneous reactions to COVID-19 vaccines using the international registry (PI: Dr. Esther Freeman).</li>
+                            <li>**University of Pennsylvania (Clinical Researcher, 2020-2022):** Analyzed representation of skin of color in educational materials and studied dermatology influencers on social media (PI: Dr. Jules Lipoff).</li>
+                            <li>**UCSF Breast Care Center (Clinical Researcher, 2016-2017):** Analyzed proton therapy efficacy and genetic factors in radiation response; served in Patient Support Corps and Ask Your Pathologist programs.</li>
+                            <li>**Princeton University (Senior Thesis, 2014-2016):** Investigated neural mechanisms of courtship behavior in *Drosophila melanogaster* using optogenetics (PI: Dr. Mala Murthy).</li>
+                            <li>**Naguru Teenage Information and Health Centre, Uganda (2018):** Conducted hearing screens for adolescents.</li>
+                        </ul>
+                    </div>
+                     <div class="text-center mt-8">
+                         <a href="https://scholar.google.com/citations?user=Pb_Ht9cAAAAJ&hl=en" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center transition duration-300 group">
+                            View Publications on Google Scholar <i class="fas fa-external-link-alt ml-2 transform group-hover:scale-110 transition-transform duration-200"></i>
+                        </a>
+                     </div>
+                </div>
+            </section>
+
+            <section id="leadership" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title">Leadership, Writing & Media</h2>
+                <p class="text-gray-700 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                    I am passionate about leadership, education, advocacy, and communicating medical information effectively through various platforms.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> <div class="p-6 content-card">
+                         <div class="text-center mb-4"><i class="fas fa-users text-3xl text-purple-600"></i></div> <h4 class="text-lg font-semibold card-title mb-3 text-center">Leadership & Service</h4>
+                         <div class="content-card-content">
+                            <ul class="list-disc list-inside space-y-1.5 card-list text-left"> <li>Member, Council of Science and Research, AAD (2025-2027)</li>
+                                <li>Founder/Director, Philadelphia Organization of Health Professions Students (COVID-19 response, 2020-21)</li>
+                                <li>Curriculum Representative, Penn Medicine (Class of 2017)</li>
+                                <li>Academics Chair, Princeton USG (Led academic calendar reform)</li>
+                                <li>Founder, RealTalkPrinceton (Online Q&A platform)</li>
+                                <li>Patient Advocate, UCSF Patient Support Corps</li>
+                            </ul>
+                         </div>
+                    </div>
+                     <div class="p-6 content-card">
+                         <div class="text-center mb-4"><i class="fas fa-pencil-alt text-3xl text-green-600"></i></div>
+                        <h4 class="text-lg font-semibold card-title mb-3 text-center">Writing & Contributions</h4>
+                        <div class="content-card-content">
+                            <ul class="list-disc list-inside space-y-1.5 card-list text-left">
+                                <li>Contributor, Practical Dermatology (Articles on AI, conference summaries)</li>
+                                <li>Writer/Editor/Producer, ABC News (COVID-19, vaccines, climate change articles; script vetting)</li>
+                                <li>Contributor, Medscape (Articles on public perception, medical education, mentorship)</li>
+                                <li>Book Chapter Author: "Making the Most of your Hidradenitis Suppurativa" (Springer, 2021)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 content-card">
+                         <div class="text-center mb-4"><i class="fas fa-podcast text-3xl text-red-600"></i></div>
+                        <h4 class="text-lg font-semibold card-title mb-3 text-center">Podcasting & Radio</h4>
+                         <div class="content-card-content">
+                            <ul class="list-disc list-inside space-y-1.5 card-list text-left">
+                                <li>Producer, Carry the One Radio (UCSF) - Episodes on neuroscience of music, FDA-approved games.</li>
+                                <li>Producer, Antiviral: COVID-19 Podcast for Medical Students</li>
+                                <li>Radio Show Producer/Host, Apocalypse Dreams (WPRB Princeton)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10">
+                 <h2 class="text-2xl md:text-3xl font-bold section-title">Skills & Personal Interests</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div class="p-6 content-card bg-gray-50 border-gray-200"> <div class="text-center mb-4"><i class="fas fa-laptop-code text-3xl text-blue-600"></i></div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3 text-center">Skills</h4>
+                         <div class="content-card-content">
+                            <ul class="list-disc list-inside space-y-1.5 card-list text-left">
+                                <li>**Languages:** English (Native), Arabic (Conversational), Spanish (Advanced)</li>
+                                <li>**Technical:** Python (Intermediate), R (Proficient)</li>
+                                <li>**Media:** Podcasting (Drafting, interviewing, recording, editing - Intermediate)</li>
+                            </ul>
+                         </div>
+                     </div>
+                     <div class="p-6 content-card bg-gray-50 border-gray-200">
+                        <div class="text-center mb-4"><i class="fas fa-guitar text-3xl text-orange-600"></i></div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3 text-center">Hobbies</h4>
+                         <div class="content-card-content">
+                            <ul class="list-disc list-inside space-y-1.5 card-list text-left">
+                                <li>Writing</li>
+                                <li>Photography</li>
+                                <li>Guitar</li>
+                                <li>Live Music / Concerts</li>
+                                <li>Board Games</li>
+                                <li>Exploring Egyptian Heritage</li>
+                            </ul>
+                         </div>
+                     </div>
+                 </div>
+                 <p class="text-gray-700 text-center mt-8 leading-relaxed">
+                    Maintaining a balance between professional pursuits and personal interests is important to me.
+                </p>
+            </section>
+
+            <section id="contact" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10">
+                 <h2 class="text-2xl md:text-3xl font-bold section-title">Connect</h2>
+                <p class="text-gray-700 text-center max-w-xl mx-auto mb-8 leading-relaxed">
+                    You can view my professional profiles and publications via the links below. Please note that medical advice cannot be provided through these channels.
+                </p>
+                <div class="bg-gray-100 p-8 rounded-lg border border-gray-200 text-center max-w-md mx-auto">
+                     <div class="flex justify-center space-x-8">
+                        <a href="https://scholar.google.com/citations?user=Pb_Ht9cAAAAJ&hl=en" target="_blank" title="Google Scholar" class="text-gray-500 hover:text-blue-600 transition duration-300 transform hover:scale-110">
+                            <i class="fas fa-graduation-cap fa-2x"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Ramie-Fathy-2" target="_blank" title="ResearchGate" class="text-gray-500 hover:text-green-600 transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-researchgate fa-2x"></i>
+                        </a>
+                     </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div> <footer class="bg-gray-800 text-gray-400 py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="current-year"></span> Ramie Fathy. All Rights Reserved.</p>
+            <p class="text-sm mt-2 text-gray-500">Website design inspired by drerictopol.com.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Sidebar Toggle ---
+        const sidebar = document.getElementById('sidebar');
+        const menuButton = document.getElementById('mobile-menu-button');
+        const closeButton = document.getElementById('close-sidebar-button');
+
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.remove('translate-x-full');
+        });
+
+        closeButton.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+        });
+
+        // Close sidebar if clicking outside of it on mobile
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !menuButton.contains(event.target) && !sidebar.classList.contains('translate-x-full') && window.innerWidth < 1024) {
+                 sidebar.classList.add('translate-x-full');
+            }
+        });
+
+        // Close sidebar when a link is clicked
+        const sidebarLinks = document.querySelectorAll('#sidebar a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 if (window.innerWidth < 1024) { // Only close on mobile
+                    sidebar.classList.add('translate-x-full');
+                 }
+            });
+        });
+
+
+        // --- Active Link Highlighting on Scroll ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '-50% 0px -50% 0px', // Trigger in the middle of the viewport
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('sidebar-link-active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('sidebar-link-active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+         // Fallback for initial load or if Intersection Observer fails for top section
+        window.addEventListener('load', () => {
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                 const activeLink = document.querySelector(`.sidebar-link[href="${currentHash}"]`);
+                 if(activeLink) {
+                     navLinks.forEach(link => link.classList.remove('sidebar-link-active'));
+                     activeLink.classList.add('sidebar-link-active');
+                 }
+            } else if (window.scrollY < window.innerHeight * 0.2) { // Check if near top
+                 const homeLink = document.querySelector('.sidebar-link[data-section="home"]');
+                 if(homeLink) {
+                    navLinks.forEach(link => link.classList.remove('sidebar-link-active'));
+                    homeLink.classList.add('sidebar-link-active');
+                 }
+            }
+        });
+
+
+        // --- Footer Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>
